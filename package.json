@@ -6,7 +6,7 @@
   "scripts": {
     "lint": "eslint .",
     "test": "npm run lint",
-    "semantic-release": "semantic-release pre && npm publish --access public && semantic-release post"
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "author": "",
   "license": "ISC",
@@ -61,6 +61,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/albizures/front-scripts.git"
+    "url": "https://github.com/pixore/front-scripts.git"
   }
 }
