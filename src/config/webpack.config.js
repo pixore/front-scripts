@@ -68,7 +68,10 @@ const modules = {
 
 const resolve = {
   extensions: ['.js', '.css', '.styl', '.jade'],
-  modules: [path.join(__dirname, '../../node_modules')]
+  modules: [
+    path.join(__dirname, '../../node_modules'),
+    path.join(ROOT_PATH, 'node_modules')
+  ]
 }
 const output = {
   pathinfo: true,
@@ -137,6 +140,9 @@ module.exports = {
     hints: false
   },
   resolveLoader: {
-    modules: [path.join(__dirname, '../../node_modules')]
+    modules: [
+      path.join(__dirname, '../../node_modules'),
+      path.join(ROOT_PATH, 'node_modules')
+    ]
   }
 }
