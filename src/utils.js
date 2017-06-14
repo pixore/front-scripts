@@ -11,7 +11,7 @@ const formatWebpackMessages = require('react-dev-utils/formatWebpackMessages')
 
 debugError.color = require('debug').colors[5]
 
-const { APP_PATH, ROOT_PATH } = require('./config/environment')
+const { APP_PATH, ROOT_PATH, MAIN_TEMPLATE } = require('./config/environment')
 const config = require('./config/webpack.config.js')
 
 let customConfig = {}
@@ -64,6 +64,10 @@ exports.validStructure = () => {
   }
   if (!fs.existsSync(eslintFilePath)) {
     debugError(eslintFilePath.replace(ROOT_PATH, '') + ' doesn\'t exists')
+    process.exit(1)
+  }
+  if (!fs.existsSync(MAIN_TEMPLATE)) {
+    debugError(MAIN_TEMPLATE.replace(ROOT_PATH, '') + ' doesn\'t exists')
     process.exit(1)
   }
 }
