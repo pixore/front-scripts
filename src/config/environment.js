@@ -16,6 +16,7 @@ config.isDev = process.env.NODE_ENV === 'development'
 config.PORT = Number(process.env.PORT) || Number(flags['--port']) || 80
 config.PIXORE_PATH = config.isProd ? (mainPackage.pixorePath || '') : ''
 config.ROOT_PATH = appRoot
+config.ESLINT_PATH = path.join(config.ROOT_PATH, '.eslintrc.js')
 config.BUILD_PATH = path.join(config.ROOT_PATH, 'build')
 config.SRC_PATH = path.join(config.ROOT_PATH, 'src')
 config.APP_PATH = path.join(config.SRC_PATH, 'index.js')

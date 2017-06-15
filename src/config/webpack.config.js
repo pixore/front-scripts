@@ -1,11 +1,12 @@
 const path = require('path')
+const assign = require('lodash.assign')
 const debug = require('debug')('pixore')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const UglifyJSPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeModulesPlugin')
-const { isProd, MAIN_TEMPLATE, APP_PATH, BUILD_PATH, PIXORE_PATH, ROOT_PATH } = require('./environment')
+const { isProd, MAIN_TEMPLATE, APP_PATH, BUILD_PATH, PIXORE_PATH, ROOT_PATH, ESLINT_PATH } = require('./environment')
 
 debug.namespace = ''
 
@@ -26,9 +27,9 @@ const modules = {
     loader: 'eslint-loader',
     enforce: 'pre',
     exclude: /node_modules|webpackHotDevClient/,
-    options: {
+    options: assign({
       cacheDirectory: true
-    }
+    }, require(ESLINT_PATH))
   }, {
     test: /\.js$/,
     exclude: /node_modules/,

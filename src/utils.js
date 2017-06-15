@@ -6,22 +6,19 @@ const debugError = require('debug')('pixore:error')
 const chalk = require('chalk')
 const webpack = require('webpack')
 const assign = require('lodash.assign')
-const appRoot = fs.realpathSync(process.cwd())
 const formatWebpackMessages = require('react-dev-utils/formatWebpackMessages')
 
 debug.namespace = ''
 
 debugError.color = require('debug').colors[5]
 
-const { APP_PATH, ROOT_PATH, MAIN_TEMPLATE } = require('./config/environment')
+const { APP_PATH, ROOT_PATH, MAIN_TEMPLATE, ESLINT_PATH } = require('./config/environment')
 const config = require('./config/webpack.config.js')
 
 let customConfig = {}
-if (fs.existsSync(path.join(appRoot, 'webpack.config.js'))) {
-  customConfig = require(path.join(appRoot, 'webpack.config.js'))
+if (fs.existsSync(path.join(ROOT_PATH, 'webpack.config.js'))) {
+  customConfig = require(path.join(ROOT_PATH, 'webpack.config.js'))
 }
-
-const eslintFilePath = path.join(appRoot, '.eslintrc.js')
 
 exports.setupCompile = () => {
   const compiler = webpack(assign(config, customConfig))
@@ -64,8 +61,8 @@ exports.validStructure = () => {
     debugError(APP_PATH.replace(ROOT_PATH, '') + ' doesn\'t exists')
     process.exit(1)
   }
-  if (!fs.existsSync(eslintFilePath)) {
-    debugError(eslintFilePath.replace(ROOT_PATH, '') + ' doesn\'t exists')
+  if (!fs.existsSync(ESLINT_PATH)) {
+    debugError(ESLINT_PATH.replace(ROOT_PATH, '') + ' doesn\'t exists')
     process.exit(1)
   }
   if (!fs.existsSync(MAIN_TEMPLATE)) {
