@@ -9,6 +9,8 @@ const { PORT, PIXORE_PATH } = require('../config/environment')
 const { rewriteListen } = require('../webpackDevServer')
 const { validStructure, setupCompile } = require('../utils')
 
+debug.namespace = ''
+
 validStructure()
 
 rewriteListen(WebpackDevServer)

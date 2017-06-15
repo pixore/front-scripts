@@ -9,6 +9,8 @@ const assign = require('lodash.assign')
 const appRoot = fs.realpathSync(process.cwd())
 const formatWebpackMessages = require('react-dev-utils/formatWebpackMessages')
 
+debug.namespace = ''
+
 debugError.color = require('debug').colors[5]
 
 const { APP_PATH, ROOT_PATH, MAIN_TEMPLATE } = require('./config/environment')

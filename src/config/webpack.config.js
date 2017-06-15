@@ -7,6 +7,8 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeModulesPlugin')
 const { isProd, MAIN_TEMPLATE, APP_PATH, BUILD_PATH, PIXORE_PATH, ROOT_PATH } = require('./environment')
 
+debug.namespace = ''
+
 const plugins = [
   new webpack.DefinePlugin({
     'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
