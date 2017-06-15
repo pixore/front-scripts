@@ -25,11 +25,7 @@ const modules = {
     test: /\.js$/,
     loader: 'eslint-loader',
     enforce: 'pre',
-    exclude: /node_modules|webpackHotDevClient/,
-    options: {
-      cacheDirectory: true,
-      configFile: ESLINT_PATH
-    }
+    exclude: /node_modules|webpackHotDevClient/
   }, {
     test: /\.js$/,
     exclude: /node_modules/,
@@ -115,6 +111,17 @@ if (isProd) {
   ]
   devtool = 'source-map'
   plugins.push(
+    new webpack.LoaderOptionsPlugin({
+      test: /\.js$/,
+      options: {
+        eslint: {
+          options: {
+            cacheDirectory: true,
+            configFile: ESLINT_PATH
+          }
+        }
+      }
+    }),
     new HtmlWebpackPlugin({
       title: 'Pixore',
       filename: 'index.html',
