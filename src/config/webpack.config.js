@@ -1,5 +1,4 @@
 const path = require('path')
-const assign = require('lodash.assign')
 const debug = require('debug')('pixore')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
@@ -27,9 +26,10 @@ const modules = {
     loader: 'eslint-loader',
     enforce: 'pre',
     exclude: /node_modules|webpackHotDevClient/,
-    options: assign({
-      cacheDirectory: true
-    }, require(ESLINT_PATH))
+    options: {
+      cacheDirectory: true,
+      configFile: ESLINT_PATH
+    }
   }, {
     test: /\.js$/,
     exclude: /node_modules/,
