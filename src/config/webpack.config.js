@@ -29,7 +29,8 @@ const modules = {
   }, {
     test: /\.js$/,
     exclude: /node_modules/,
-    loader: 'babel-loader'
+    loader: 'babel-loader',
+    options: require('./babelrc')
   }, {
     test: /\.(jade|pug)$/,
     loader: 'pug-loader'
