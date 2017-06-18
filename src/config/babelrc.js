@@ -1,16 +1,16 @@
 
 module.exports = {
   plugins: [
-    'transform-object-rest-spread'
+    require.resolve('babel-plugin-transform-object-rest-spread')
   ],
   presets: [
     [
-      'es2015',
+      require.resolve('babel-preset-es2015'),
       {
         'modules': false
       }
     ],
-    'react'
+    require.resolve('babel-preset-react')
   ],
   ignore: [
     'webpackHotDevClient',

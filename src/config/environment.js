@@ -3,9 +3,8 @@ const { flags } = require('parse-cmd-args')()
 process.env.NODE_ENV = process.env.NODE_ENV || 'development'
 
 const path = require('path')
-const fs = require('fs')
 
-const appRoot = fs.realpathSync(process.cwd())
+const appRoot = process.cwd()
 const mainPackage = require(path.join(appRoot, 'package.json'))
 
 const config = {}

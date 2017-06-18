@@ -1,5 +1,4 @@
-const { ROOT_PATH } = require('./environment')
 
-const context = require.context(ROOT_PATH, true, /.+(__tests__\/).+\.spec\.js?$/)
+const context = require.context(process.env.pwd, true, /.+(__tests__\/).+\.spec\.js?$/)
 
 context.keys().forEach(context)

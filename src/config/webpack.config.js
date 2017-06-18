@@ -5,14 +5,15 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const UglifyJSPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeModulesPlugin')
-const { isProd, isDev, MAIN_TEMPLATE, APP_PATH, BUILD_PATH, PIXORE_PATH, ROOT_PATH, ESLINT_PATH } = require('./environment')
+const { isProd, isDev, isTest, MAIN_TEMPLATE, APP_PATH, BUILD_PATH, PIXORE_PATH, ROOT_PATH, ESLINT_PATH } = require('./environment')
 
 debug.namespace = ''
 
 const plugins = [
   new webpack.DefinePlugin({
     'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
-    'process.env.PIXORE_PATH': JSON.stringify(PIXORE_PATH)
+    'process.env.PIXORE_PATH': JSON.stringify(PIXORE_PATH),
+    'process.env.pwd': isTest ? JSON.stringify(path.join(ROOT_PATH, 'src')) : false
   })
 ]
 let devtool

@@ -63,7 +63,7 @@
     "pixore-front-scripts": "./bin/index.js"
   },
   "devDependencies": {
-    "@pixore/eslint-config": "^1.2.0",
+    "@pixore/eslint-config": "^1.4.0",
     "semantic-release": "^6.3.6"
   },
   "repository": {
