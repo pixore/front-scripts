@@ -67,7 +67,7 @@ const modules = {
 }
 
 const resolve = {
-  extensions: ['.js', '.css', '.styl', '.jade'],
+  extensions: ['', '.js', '.css', '.styl', '.jade'],
   modules: [
     path.join(__dirname, '../../node_modules'),
     path.join(ROOT_PATH, 'node_modules')
