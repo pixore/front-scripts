@@ -1,11 +1,11 @@
 const path = require('path')
-const debug = require('debug')('pixore')
+const debug = require('debug')('pixore:front-scripts')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const UglifyJSPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeModulesPlugin')
-const { isProd, MAIN_TEMPLATE, APP_PATH, BUILD_PATH, PIXORE_PATH, ROOT_PATH, ESLINT_PATH } = require('./environment')
+const { isProd, isDev, MAIN_TEMPLATE, APP_PATH, BUILD_PATH, PIXORE_PATH, ROOT_PATH, ESLINT_PATH } = require('./environment')
 
 debug.namespace = ''
 
@@ -67,7 +67,7 @@ const modules = {
 }
 
 const resolve = {
-  extensions: ['', '.js', '.css', '.styl', '.jade'],
+  extensions: ['.js', '.css', '.styl', '.jade'],
   modules: [
     path.join(__dirname, '../../node_modules'),
     path.join(ROOT_PATH, 'node_modules')
@@ -136,9 +136,8 @@ if (isProd) {
   )
 }
 
-debug(resolve)
-
 module.exports = {
+  watch: isDev,
   devtool,
   entry,
   output,

@@ -2,7 +2,7 @@ process.env.NODE_ENV = 'development'
 process.env.DEBUG = 'pixore:front-scripts, pixore:dev, pixore:error'
 
 const Promise = require('bluebird')
-const debug = require('debug')('pixore')
+const debug = require('debug')('pixore:front-scripts')
 const historyApiFallback = require('connect-history-api-fallback')
 const WebpackDevServer = require('webpack-dev-server')
 const chalk = require('chalk')
@@ -22,6 +22,7 @@ const runDevServer = compiler => new WebpackDevServer(compiler, {
   clientLogLevel: 'none',
   contentBase: false,
   hot: true,
+  quiet: true,
   publicPath: config.output.publicPath,
   watchOptions: {
     ignored: /node_modules/
