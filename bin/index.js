@@ -1,9 +1,9 @@
 #! /usr/bin/env node
 
-process.env.DEBUG = 'pixore, pixore:*'
+process.env.DEBUG = 'pixore:front-scripts'
 
 const {input} = require('parse-cmd-args')()
-const debug = require('debug')('pixore')
+const debug = require('debug')('pixore:front-scripts')
 
 switch (input) {
   case 'start':

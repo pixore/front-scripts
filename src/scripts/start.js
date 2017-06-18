@@ -1,3 +1,5 @@
+process.env.NODE_ENV = 'development'
+process.env.DEBUG = 'pixore:front-scripts, pixore:dev, pixore:error'
 
 const Promise = require('bluebird')
 const debug = require('debug')('pixore')
@@ -21,7 +23,6 @@ const runDevServer = compiler => new WebpackDevServer(compiler, {
   contentBase: false,
   hot: true,
   publicPath: config.output.publicPath,
-  quiet: true,
   watchOptions: {
     ignored: /node_modules/
   }
