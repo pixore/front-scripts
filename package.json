@@ -8,6 +8,11 @@
     "test": "npm run lint",
     "semantic-release": "semantic-release pre && npm publish --access public && semantic-release post"
   },
+  "files": [
+    "bin",
+    "src",
+    "README.md"
+  ],
   "author": "",
   "license": "ISC",
   "dependencies": {
@@ -56,7 +61,7 @@
     "pixore-front-scripts": "./bin/index.js"
   },
   "devDependencies": {
-    "@pixore/eslint-config": "^1.1.0",
+    "@pixore/eslint-config": "^1.2.0",
     "semantic-release": "^6.3.6"
   },
   "repository": {
