@@ -1,4 +1,4 @@
-const debug = require('debug')
+const debug = require('debug')('pixore:front-scripts')
 const sockjs = require('sockjs')
 const path = require('path')
 const clientStats = { errorDetails: false }
@@ -9,7 +9,7 @@ exports.rewriteListen = Server => {
     const returnValue = this.listeningApp.listen.apply(this.listeningApp, arguments)
     const sockServer = sockjs.createServer({
       // Use provided up-to-date sockjs-client
-      sockjs_url: path.join(PIXORE_PATH, '/__webpack_dev_server__/sockjs.bundle.js'),
+      sockjs_url: path.join('/', PIXORE_PATH, '/__webpack_dev_server__/sockjs.bundle.js'),
       // Limit useless logs
       log (severity, line) {
         if (severity === 'error') {
@@ -41,7 +41,7 @@ exports.rewriteListen = Server => {
     })
 
     sockServer.installHandlers(this.listeningApp, {
-      prefix: path.join(PIXORE_PATH, '/sockjs-node')
+      prefix: path.join('/', PIXORE_PATH, '/sockjs-node')
     })
     return returnValue
   }

@@ -1,7 +1,7 @@
 
 const path = require('path')
 const fs = require('fs')
-const debug = require('debug')('pixore')
+const debug = require('debug')('pixore:front-scripts')
 const debugError = require('debug')('pixore:error')
 const chalk = require('chalk')
 const webpack = require('webpack')
