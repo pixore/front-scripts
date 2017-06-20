@@ -4,11 +4,6 @@ process.env.DEBUG = 'pixore:front-scripts, pixore:error'
 
 const {input} = require('parse-cmd-args')()
 const debug = require('debug')('pixore:front-scripts')
-const path = require('path')
-
-debug(process.env.PWD)
-debug(path.resolve(__dirname))
-debug(process.cwd())
 
 switch (input) {
   case 'start':
@@ -16,6 +11,9 @@ switch (input) {
     break
   case 'test':
     require('../src/scripts/test')
+    break
+  case 'build':
+    require('../src/scripts/build')
     break
   default:
     debug('Unknown script "' + input + '".')

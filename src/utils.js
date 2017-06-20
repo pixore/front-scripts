@@ -37,10 +37,10 @@ exports.setupCompile = () => {
 
     if (messages.errors.length) {
       debug(chalk.red('Failed to compile.'))
-      debug()
+      debug('\n')
       messages.errors.forEach(message => {
         debug(message)
-        debug()
+        debug('\n')
       })
     }
 
@@ -49,7 +49,7 @@ exports.setupCompile = () => {
       debug()
       messages.warnings.forEach(message => {
         debug(message)
-        debug()
+        debug('\n')
       })
     }
   })
