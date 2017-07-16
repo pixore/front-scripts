@@ -1,7 +1,8 @@
 
 module.exports = {
   plugins: [
-    require.resolve('babel-plugin-transform-object-rest-spread')
+    require.resolve('babel-plugin-transform-object-rest-spread'),
+    require.resolve('transform-class-properties')
   ],
   presets: [
     [
