@@ -10,7 +10,7 @@ module.exports = {
     [
       require.resolve('babel-preset-es2015'),
       {
-        'modules': isTest ? 'commonjs' : true
+        'modules': isTest ? 'commonjs' : false
       }
     ],
     require.resolve('babel-preset-react')
