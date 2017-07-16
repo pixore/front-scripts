@@ -32,7 +32,6 @@ Launches the test runner with karma and mocha
 
 ## Todo list
 - Make karma optional
-- 
 
 [npm]: https://img.shields.io/npm/v/@pixore/front-scripts.svg
 [npm-url]: https://www.npmjs.com/package/@pixore/front-scripts

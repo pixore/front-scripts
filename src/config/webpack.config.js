@@ -1,6 +1,7 @@
 const path = require('path')
 const debug = require('debug')('pixore:front-scripts')
 const webpack = require('webpack')
+const StyleLintPlugin = require('stylelint-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const UglifyJSPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
@@ -16,6 +17,7 @@ const plugins = [
     'process.env.pwd': isTest ? JSON.stringify(path.join(ROOT_PATH, 'src')) : false
   })
 ]
+
 let devtool
 let entry
 let devServer
@@ -42,12 +44,12 @@ const modules = {
       use: 'css-loader'
     })
   }, {
-    test: /\.styl$/,
-    loader: ExtractTextPlugin.extract({
+    test: /\.scss$/,
+    use: ExtractTextPlugin.extract({
       fallback: 'style-loader',
       use: [
         'css-loader',
-        'stylus-loader'
+        'sass-loader'
       ]
     })
   }, {
@@ -68,7 +70,7 @@ const modules = {
 }
 
 const resolve = {
-  extensions: ['.js', '.css', '.styl', '.jade'],
+  extensions: ['.js', '.css', '.scss', '.jade'],
   modules: [
     path.join(__dirname, '../../node_modules'),
     path.join(ROOT_PATH, 'node_modules')
@@ -133,7 +135,8 @@ if (isProd) {
     new WatchMissingNodeModulesPlugin(path.resolve(path.join(ROOT_PATH, 'node_modules'))),
     new ExtractTextPlugin({
       filename: '[name].css'
-    })
+    }),
+    new StyleLintPlugin()
   )
 }
 
