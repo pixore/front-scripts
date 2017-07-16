@@ -21,15 +21,10 @@ const plugins = [
 let devtool
 let entry
 let devServer
-const externals = []
+const externals = {}
 
 const modules = {
   rules: [{
-    test: /\.js$/,
-    loader: 'eslint-loader',
-    enforce: 'pre',
-    exclude: /node_modules|webpackHotDevClient/
-  }, {
     test: /\.js$/,
     exclude: /node_modules/,
     loader: 'babel-loader',
@@ -83,6 +78,28 @@ const output = {
   filename: isProd ? '[name].[chunkhash].js' : 'build.js'
 }
 
+if (isDev) {
+  modules.rules = [{
+    test: /\.js$/,
+    loader: 'eslint-loader',
+    enforce: 'pre',
+    exclude: /node_modules|webpackHotDevClient/
+  }].concat(modules.rules)
+  plugins.push(
+    new webpack.LoaderOptionsPlugin({
+      test: /\.js$/,
+      options: {
+        eslint: {
+          options: {
+            cacheDirectory: true,
+            configFile: ESLINT_PATH
+          }
+        }
+      }
+    })
+  )
+}
+
 if (isProd) {
   entry = {
     index: APP_PATH
@@ -115,17 +132,6 @@ if (isProd) {
   ]
   devtool = 'source-map'
   plugins.push(
-    new webpack.LoaderOptionsPlugin({
-      test: /\.js$/,
-      options: {
-        eslint: {
-          options: {
-            cacheDirectory: true,
-            configFile: ESLINT_PATH
-          }
-        }
-      }
-    }),
     new HtmlWebpackPlugin({
       title: 'Pixore',
       filename: 'index.html',

@@ -4,6 +4,11 @@ const webpackConfig = require('./webpack.config')
 
 webpackConfig.devtool = 'cheap-module-source-map'
 webpackConfig.watch = true
+Object.assign(webpackConfig.externals, {
+  'react/lib/ExecutionEnvironment': true,
+  'react/addons': true,
+  'react/lib/ReactContext': 'window'
+})
 
 const testPath = require.resolve('./tests.webpack.js')
 module.exports = config => {
