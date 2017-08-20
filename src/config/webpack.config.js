@@ -138,9 +138,12 @@ if (isProd) {
       }
     }),
     new UglifyJSPlugin({
-      output: {
-        comments: false
-      }
+      // uglifyOptions: {
+      //   ecma: 8
+      // },
+      // output: {
+      //   comments: false
+      // }
     }),
     new HtmlWebpackPlugin({
       title: 'Pixore',

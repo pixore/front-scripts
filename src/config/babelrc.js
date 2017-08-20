@@ -8,9 +8,12 @@ module.exports = {
   ],
   presets: [
     [
-      require.resolve('babel-preset-es2015'),
+      require.resolve('babel-preset-env'),
       {
-        'modules': isTest ? 'commonjs' : false
+        targets: {
+          browsers: ['last 1 Chrome versions']
+        },
+        modules: isTest ? 'commonjs' : false
       }
     ],
     require.resolve('babel-preset-react')
