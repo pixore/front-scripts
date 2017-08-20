@@ -28,11 +28,16 @@ exports.setupCompile = () => {
   })
 
   compiler.plugin('done', function (stats) {
-    var messages = formatWebpackMessages(stats.toJson({}, true))
+    const statsJson = stats.toJson({timings: true, colors: true}, true)
+    var messages = formatWebpackMessages(statsJson)
     var isSuccessful = !messages.errors.length && !messages.warnings.length
 
     if (isSuccessful) {
       debug(chalk.green('Compiled successfully!'))
+      debug(stats.toString({
+        chunks: false,
+        colors: true
+      }))
     }
 
     if (messages.errors.length) {

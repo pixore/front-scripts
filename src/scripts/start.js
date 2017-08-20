@@ -5,6 +5,7 @@ const Promise = require('bluebird')
 const debug = require('debug')('pixore:front-scripts')
 const historyApiFallback = require('connect-history-api-fallback')
 const WebpackDevServer = require('webpack-dev-server')
+const errorOverlayMiddleware = require('react-error-overlay/middleware')
 const chalk = require('chalk')
 const config = require('../config/webpack.config')
 const { PORT, PIXORE_PATH } = require('../config/environment')
@@ -30,6 +31,7 @@ const runDevServer = compiler => new WebpackDevServer(compiler, {
 })
 
 const addMiddleware = devServer => {
+  devServer.use(errorOverlayMiddleware())
   devServer
     .use(historyApiFallback({
       disableDotRule: true,
