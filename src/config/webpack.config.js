@@ -28,6 +28,14 @@ const externals = {}
 
 const modules = {
   rules: [{
+    test: /\.worker\.js?$/,
+    use: [{
+      loader: 'worker-loader',
+      options: {
+        name: 'workers/[name].[ext]'
+      }
+    }]
+  }, {
     test: /\.js$/,
     exclude: /node_modules/,
     loader: 'babel-loader',
@@ -50,14 +58,6 @@ const modules = {
         'sass-loader'
       ]
     })
-  }, {
-    test: /\.worker\.js?$/,
-    use: [{
-      loader: 'worker-loader',
-      options: {
-        name: 'workers/[name].[ext]'
-      }
-    }, 'babel-loader']
   }, {
     test: /\.(ico|jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2)(\?.*)?$/,
     loader: 'file-loader',
@@ -137,7 +137,11 @@ if (isProd) {
         return module.context && module.context.indexOf('node_modules') !== -1
       }
     }),
-    new UglifyJSPlugin(),
+    new UglifyJSPlugin({
+      output: {
+        comments: false
+      }
+    }),
     new HtmlWebpackPlugin({
       title: 'Pixore',
       filename: 'index.html',
